@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
+export const API_BASE_URL = import.meta.env.DEV ? 
+import.meta.env.VITE_BACKEND_URL 
+: import.meta.env.VITE_BACKEND_URL_PROD
+
 
 const api = axios.create({
   baseURL: API_BASE_URL + '/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
+ 
 });
 
 // Attach admin JWT token to every request
